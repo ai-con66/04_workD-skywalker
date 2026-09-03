@@ -1,0 +1,326 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* =============================================
+   1. 基本レイアウト（PC・スマホ共通）
+   ============================================= */
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #f8f9fa;
+}
+
+main.flex-shrink-0 {
+    flex: 1 0 auto;
+}
+
+/* 
+footer {
+    flex-shrink: 0;
+    background: rgba(0,0,0,0.7);
+}
+ */
+
+/* 外枠(box04) */
+.box04 {
+    width: 100% !important;
+    max-width: 1300px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    float: none !important;
+}
+
+/* 内側の白いボックス(box01) */
+.box01 {
+    background: #fff;
+    border: solid 1px rgba(0,96,141,0.5);
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* =============================================
+   2. PCサイズの設定（992px以上）
+   ============================================= */
+@media (min-width: 992px) {
+    .box01 {
+        padding: 40px 60px !important;
+    }
+    
+    .confirmation-page .box04 {
+        max-width: 1000px !important;
+    }
+    .confirmation-page .box01 {
+        padding: 20px 40px !important;
+    }
+    .confirmation-page .box01 .container {
+        padding: 10px !important;
+    }
+}
+
+/* =============================================
+   3. スマホ・タブレットの設定（991px以下）
+   ============================================= */
+@media (max-width: 991px) {
+    .box04 {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-top: 10px !important;
+        margin-bottom: 10px !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    .box01 {
+        padding: 20px 10px !important;
+        border-left: none !important;
+        border-right: none !important;
+        border-radius: 0 !important;
+    }
+
+    .box01 .container, 
+    .box01 .row, 
+    .box01 [class*="col-"] {
+        padding-left: 5px !important;
+        padding-right: 5px !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .form01 {
+        width: 35% !important;
+        min-width: 100px !important;
+        padding: 10px 5px !important;
+        font-size: 0.85rem;
+    }
+    .form02 {
+        width: 65% !important;
+        padding: 10px 5px !important;
+        font-size: 0.85rem;
+    }
+}
+
+/* =============================================
+   4. フォームパーツ共通設定
+   ============================================= */
+
+/* ラベルの高さ統一設定（電話番号のズレ対策） */
+.form-label {
+    display: inline-block !important;
+    min-height: 2rem;
+    margin-bottom: 0.3rem;
+    vertical-align: middle;
+    line-height: 1.5;
+}
+
+/* 必須マーク（＊） */
+.required-mark {
+    color: #dc3545;
+    vertical-align: super;
+    font-size: 0.75rem;
+    margin-left: 2px;
+    font-weight: bold;
+    line-height: 0;
+}
+
+.form-label small {
+    font-size: 0.8rem !important;
+    color: #6c757d;
+    margin-left: 5px;
+    font-weight: normal;
+}
+
+/* =============================================
+   5. チェックボックス・ラジオボタンの調整
+   ============================================= */
+
+/* チェックボックス・ラジオボタン共通 */
+.form-check-input {
+    width: 1.15rem !important;
+    height: 1.15rem !important;
+    border: 1px solid #0d6efd !important;
+    cursor: pointer;
+    /* 位置を少し上に調整 */
+    margin-top: -0.8px !important;
+    vertical-align: middle;
+}
+
+.form-check-input:checked {
+    background-color: #0d6efd !important;
+    border-color: #0d6efd !important;
+}
+
+/* 同意エリア */
+.form-check-custom {
+    display: inline-flex !important;
+    align-items: center; /* 縦方向の真ん中に揃える */
+    padding: 5px 10px !important;
+    cursor: pointer;
+}
+
+.form-check-custom .form-check-label {
+    padding-left: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+/* =============================================
+   6. 同意文言の改行調整
+   ============================================= */
+
+/* 親コンテナ：中身を常に水平方向の中央に配置する */
+.privacy-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 24px 0 0 0 !important; /* 上だけに余白を作り、下・左右は0にします */
+    padding: 0 !important;
+    display: flex !important;      /* Flexboxを有効化 */
+    justify-content: center !important; /* 子要素を水平中央に */
+    flex-wrap: wrap;
+}
+
+/* テキスト本体 */
+.privacy-text {
+    display: block;
+    text-align: center;
+    line-height: 1.7;
+    white-space: nowrap; /* PCでは1行 */
+    font-size: 0.95rem;
+    color: #555;
+    width: auto;         /* コンテンツに合わせる */
+}
+
+/* スマホ・タブレット（991px以下） */
+@media (max-width: 991px) {
+    .privacy-text {
+        white-space: normal !important;
+        font-size: 0.9rem;
+        padding: 0 15px;
+        /* word-break: break-all;  ←これを削除または normal に変更 */
+        word-break: normal; 
+        overflow-wrap: anywhere; /* 長いURLなどがある場合の保険 */
+        max-width: 100%;
+    }
+}
+
+/* =============================================
+   7. その他パーツ設定
+   ============================================= */
+
+.form01 {
+    width: 200px !important;
+    background-color: #f8f9fa;
+    word-break: break-all;
+    vertical-align: middle;
+}
+.form02 {
+    word-break: break-all;
+    white-space: normal !important;
+    vertical-align: middle;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 0.85rem;
+    margin-top: 4px;
+}
+
+.btn-md {
+    padding: 10px 25px;
+}
+
+.txt-ctr { text-align: center; }
+.bdrc01 { border-color: rgba(0,0,0,0.1) !important; }
+
+
+/* 閉じるボタンのカスタマイズ（リセットボタンと形を合わせる） */
+.btn-close-window {
+    background-color: #6c757d; /* グレー */
+    color: #fff;
+    border: none;
+    padding: 10px 24px;       /* ボタンのサイズ感調整 */
+    border-radius: 0.375rem;   /* Bootstrap標準の角丸。これでリセットボタンと揃います */
+    transition: all 0.3s ease;
+    font-weight: bold;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.btn-close-window:hover {
+    background-color: #5a6268;
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+
+/* =============================================
+   8. スリムフッター（main.htmlと完全同期調整）
+   ============================================= */
+
+.footer-slim {
+    background: linear-gradient(to bottom, #005ce6 0%, #1e90ff 100%) !important;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 0 !important;
+    
+    /* 文字を上に持ち上げるため、上を詰め、下を広げます */
+    /* 合計16pxを維持しつつバランスを変更 */
+    padding-top: 8px !important;    /* 10pxから6pxに減らす */
+    padding-bottom: 8px !important; /* 6pxから10pxに増やす */
+    
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+}
+
+.footer-slim p {
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
+    line-height: 1.6;
+    color: #fff !important;
+    margin: 0;
+    /* 念のため、ブラウザ独自の余計な余白をリセット */
+    padding: 0;
+    display: block;
+}
+
+/* フッター直上のロゴ背景エリア */
+.footer-od-bg {
+    width: 100%;
+    /* 1. 上のコンテンツ（送信ボタンやサイドバー等）との距離を調整 */
+    margin-top: 10px; 
+    
+    /* 2. ロゴを表示する「箱」の高さ。ここを大きくすると上下の余白に余裕が出ます */
+    height: 150px; 
+    
+    flex-shrink: 0;
+    background-color: transparent;
+    background-image: url('../../img/logo_ilst/od-logo.svg');
+    background-repeat: no-repeat;
+
+    /* 3. main.htmlと同じ比率で、画面幅に合わせて伸縮させる */
+    background-size: 25.7% auto; 
+
+    /* 4. 【重要】位置の微調整 */
+    /* center = 左右中央 */
+    /* bottom 8px = 下端から上に浮かす（数字を増やすと上に上がる） */
+    background-position: center bottom 8px; 
+    
+    opacity: 0.2;
+    pointer-events: none;
+}
+
+/* スマホ用の微調整 */
+@media (max-width: 768px) {
+    .footer-od-bg {
+        height: 60px;
+        background-size: 47.3% auto; /* スマホでロゴの大きさ */
+        margin-top: 5px;
+    }
+}

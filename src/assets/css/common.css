@@ -1,0 +1,100 @@
+/* common.css - html共通css */
+
+/* 基本設定 */
+body {
+    margin: 0; /* bodyのデフォルトマージンを消去 */
+    padding-top: 70px; /* 固定ヘッダーの高さに合わせて微調整してください */
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    color: #333;
+    line-height: 1.6;
+    background-color: #f8f9fa;
+}
+
+.container {
+    max-width: 1000px;
+}
+
+/* privacy.html 固有のエリア設定 */
+/* ロゴエリア (フッター上の背景) */
+.footer-od-bg {
+    width: 100%;
+    height: 100px;
+    margin-top: -10px;
+    background-image: url("../img/logo_ilst/od-logo.svg");
+    background-repeat: no-repeat;
+    background-size: 25.7% auto;
+    background-position: left 49.92% bottom 8px;
+    transform: scaleX(-1);
+    opacity: 0.2;
+    pointer-events: none;
+}
+
+/* プライバシーポリシーのボックススタイル */
+.privacy-policy-box {
+    background-color: #f9f9f9;
+    line-height: 1.5;
+    border: 1px solid #dee2e6 !important;
+    padding: 1rem;
+}
+
+/* ボタン・共通コンポーネント */
+.btn-close-window {
+    cursor: pointer;
+}
+
+/* レスポンシブ対応 (スマホ用微調整) */
+@media (max-width: 991px) {
+    .isms-wrapper { display: none !important; }
+    .footer-od-bg { height: 60px; }
+}
+
+@media (max-width: 768px) {
+    .footer-od-bg { background-size: 40% auto; }
+}
+
+/* ユーティリティ */
+.js-enabled .noscript-only { display: none; }
+
+/* 固定ヘッダーの調整 */
+.fixed-top {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1030;
+}
+
+/* トップに戻るボタンのデザイン */
+.back-to-top {
+  transition: opacity 0.3s;
+  opacity: 0.8;
+}
+.back-to-top:hover {
+  opacity: 1;
+  background-color: #555 !important;
+}
+
+/* ヘッダーを完全に固定する */
+.fixed-top-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1050; /* 他の要素より上に表示 */
+    background-color: #fff;
+    border-bottom: 1px solid #dee2e6; /* 下線を追加 */
+}
+
+/* 1番目の項目 */
+section[id]:first-of-type {
+    scroll-margin-top: 80px; 
+}
+
+/* 2番目以降の項目（開きすぎる場合は数値を小さくして調整） */
+section[id]:not(:first-of-type) {
+    scroll-margin-top: 35px;
+}
+
+/* その他、不要なスタイルの整理 */
+.fixed-top {
+    position: static; /* fixed-top-containerを使うので無効化 */
+}
